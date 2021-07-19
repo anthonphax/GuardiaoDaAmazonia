@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/floresta.png" type="Texture" id=1]
+[ext_resource path="res://script/next.gd" type="Script" id=2]
+
+[sub_resource type="LineShape2D" id=1]
+normal = Vector2( 1, 0 )
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 530.401, 334.122 )
+texture = ExtResource( 1 )
+
+[node name="arvores" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0.594604, -0.891876 )
+scale = Vector2( 0.974471, 1.01001 )
+polygon = PoolVector2Array( 1074.22, 582.85, 368.821, 571.176, 237.468, 539.493, 237.468, 507.81, 262.096, 412.761, 327.773, 341.475, 319.564, 246.426, 294.935, 246.426, 278.516, 278.109, 237.468, 341.475, 196.42, 404.84, 178.05, 425.104, 107.896, 423.42, 65.0665, 404.84, 24.0186, 373.157, 65.0665, 341.475, 65.0665, 325.633, 40.4377, 301.871, 12.6302, 287.453, 45.1816, 228.524, 112, 181, 124, 94, 158, 45, 340, 43, 491.965, 56.3282, 582.27, 103.853, 475.546, 214.743, 475.546, 262.267, 467.336, 286.029, 450.917, 301.871, 475.546, 301.871, 516.594, 301.871, 524.803, 317.712, 491.965, 333.554, 524.803, 333.554, 557.641, 341.475, 574.061, 341.475, 582.27, 365.237, 565.851, 373.157, 591.783, 375.726, 623.318, 381.078, 639.737, 388.999, 623.318, 404.84, 639.737, 404.84, 664.366, 404.84, 705.414, 412.761, 746.462, 412.761, 771.091, 420.682, 803.929, 412.761, 828.558, 412.761, 853.186, 412.761, 828.558, 444.444, 910.653, 444.444, 918.863, 444.444, 927.073, 460.285, 902.444, 484.048, 935.282, 476.127, 959.911, 484.048, 984.54, 484.048, 1072.44, 390.416, 1143.71, 158.782, 1100.94, -8.70667, 1.57471, 1.98412, -51.8792, 210.454, -26.9341, 636.304, 97.7917, 679.067, 1067.09, 668.376 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 1064, 512 )
+gravity_vec = Vector2( 0, 0 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -40, 0 )
+shape = SubResource( 1 )
+one_way_collision = true
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_entered"]

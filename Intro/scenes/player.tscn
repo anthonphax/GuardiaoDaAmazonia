@@ -1,0 +1,61 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://assets/menino/run/Run (5).png" type="Texture" id=1]
+[ext_resource path="res://script/player.gd" type="Script" id=2]
+[ext_resource path="res://assets/menino/run/Run (1).png" type="Texture" id=3]
+[ext_resource path="res://assets/menino/run/Run (4).png" type="Texture" id=4]
+[ext_resource path="res://assets/menino/run/Run (3).png" type="Texture" id=5]
+[ext_resource path="res://assets/menino/run/Run (6).png" type="Texture" id=6]
+[ext_resource path="res://assets/menino/run/Run (7).png" type="Texture" id=7]
+[ext_resource path="res://assets/menino/run/Run (2).png" type="Texture" id=8]
+[ext_resource path="res://assets/menino/run/Run (8).png" type="Texture" id=9]
+[ext_resource path="res://assets/menino/run/Run (11).png" type="Texture" id=10]
+[ext_resource path="res://assets/menino/run/Run (14).png" type="Texture" id=11]
+[ext_resource path="res://assets/menino/run/Run (9).png" type="Texture" id=12]
+[ext_resource path="res://assets/menino/run/Run (10).png" type="Texture" id=13]
+[ext_resource path="res://assets/menino/run/Run (13).png" type="Texture" id=14]
+[ext_resource path="res://assets/menino/run/Run (15).png" type="Texture" id=15]
+[ext_resource path="res://assets/menino/run/Run (12).png" type="Texture" id=16]
+[ext_resource path="res://assets/menino/Idle (1).png" type="Texture" id=17]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 29.3983
+height = 1.6236
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 39.516, 48.5698 )
+
+[node name="player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="a_sprite" type="AnimatedSprite" parent="."]
+position = Vector2( -40.3921, -0.440142 )
+scale = Vector2( 0.207714, 0.224693 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( -47.1163, 24.3881 )
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 33.3354, 28.5732 )
+
+[node name="shape" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -76.9128, -23.1125 )
+shape = SubResource( 3 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
